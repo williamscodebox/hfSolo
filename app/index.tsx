@@ -10,6 +10,11 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
+      <View className="items-center justify-center bg-black h-24 w-full">
+        <Text className="text-white text-xl font-bold">
+          NativeWind + Expo Router ✅
+        </Text>
+      </View>
     </View>
   );
 }
