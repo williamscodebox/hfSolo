@@ -46,4 +46,5 @@ app-example
 .vscode/
 .git/
 notes.txt
+.setupIdea/
 
