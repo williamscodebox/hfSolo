@@ -61,13 +61,16 @@ export default function Card({
         )}
       >
         <Text
-          className={cn("font-bold", isRed ? "text-red-600" : "text-gray-900")}
+          className={cn(
+            "font-bold -top-5 self-start",
+            isRed ? "text-red-600" : "text-gray-900"
+          )}
         >
           {card.display}
         </Text>
         <Text
           className={cn(
-            "text-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+            "text-2xl absolute top-1/3 left-1/2 transform -translate-x-1/3 translate-y-0.5",
             isRed ? "text-red-600" : "text-gray-900"
           )}
         >
@@ -75,7 +78,7 @@ export default function Card({
         </Text>
         <Text
           className={cn(
-            "font-bold self-end rotate-180",
+            "font-bold -bottom-5 self-end rotate-180",
             isRed ? "text-red-600" : "text-gray-900"
           )}
         >
