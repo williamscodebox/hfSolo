@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import { Text, View } from "react-native";
 
 export default function Index() {
@@ -14,6 +15,12 @@ export default function Index() {
         <Text className="text-white text-xl font-bold">
           NativeWind + Expo Router ✅
         </Text>
+        <Card
+          key={1}
+          card={{ suit: "hearts", display: "A", value: "1" }}
+          onClick={() => console.log("Card clicked")}
+          selected={false}
+        />
       </View>
     </View>
   );
