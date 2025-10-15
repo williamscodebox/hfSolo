@@ -15,13 +15,31 @@ export default function Index() {
         <Text className="text-white text-xl font-bold">
           NativeWind + Expo Router ✅
         </Text>
-        <Card
-          key={1}
-          card={{ suit: "hearts", display: "A", value: "1" }}
-          onClick={() => console.log("Card clicked")}
-          selected={false}
-        />
       </View>
+      <Card
+        key={1}
+        card={{ suit: "hearts", display: "A", value: "1" }}
+        onClick={() => console.log("Card clicked")}
+        selected={false}
+      />
+      <Card
+        key={2}
+        card={{ suit: "clubs", display: "A", value: "1" }}
+        onClick={() => console.log("Card clicked")}
+        selected={false}
+      />
+      <Card
+        key={3}
+        card={{ suit: "spades", display: "A", value: "1" }}
+        onClick={() => console.log("Card clicked")}
+        selected={false}
+      />
+      <Card
+        key={4}
+        card={{ suit: "diamonds", display: "A", value: "1" }}
+        onClick={() => console.log("Card clicked")}
+        selected={false}
+      />
     </View>
   );
 }
