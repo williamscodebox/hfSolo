@@ -1,8 +1,27 @@
 import Card from "@/components/Card";
 import MyCarousel from "@/components/Carousel";
+import PlayerHand from "@/components/PlayerHand";
+import { CardType } from "@/utils/types";
 import { Text, View } from "react-native";
 
 export default function Index() {
+  const cards: CardType[] = [
+    { suit: "hearts", value: "5", display: "5♥" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+    { suit: "spades", value: "K", display: "K♠" },
+  ];
+
   return (
     <View
       style={{
@@ -43,6 +62,13 @@ export default function Index() {
         selected={false}
       />
       <MyCarousel />
+      <PlayerHand
+        cards={cards}
+        onCardClick={() => console.log("Card clicked")}
+        selectedCards={[]}
+        inFoot={false}
+        onSwitchToFoot={() => console.log("Switch to foot")}
+      />
     </View>
   );
 }
