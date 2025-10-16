@@ -11,7 +11,7 @@ const MyCarousel = () => {
     <Carousel
       loop
       width={width}
-      height={200}
+      height={100}
       autoPlay={true}
       data={data}
       scrollAnimationDuration={1000}
