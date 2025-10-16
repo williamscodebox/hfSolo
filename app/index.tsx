@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import MyCarousel from "@/components/Carousel";
 import { Text, View } from "react-native";
 
 export default function Index() {
@@ -41,6 +42,7 @@ export default function Index() {
         onClick={() => console.log("Card clicked")}
         selected={false}
       />
+      <MyCarousel />
     </View>
   );
 }
