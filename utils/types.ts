@@ -34,3 +34,8 @@ export interface PlayerHandProps {
   inFoot: boolean;
   onSwitchToFoot: () => void;
 }
+
+export type RulesModalProps = {
+  showRules: boolean;
+  setShowRules: (value: boolean) => void;
+};
