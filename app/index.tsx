@@ -113,30 +113,6 @@ export default function Index() {
           onPress={() => console.log("Card clicked")}
           selected={false}
         />
-        <Card
-          key={5}
-          card={{ suit: "hearts", display: "A", value: "1" }}
-          onPress={() => console.log("Card clicked")}
-          selected={false}
-        />
-        <Card
-          key={6}
-          card={{ suit: "clubs", display: "A", value: "1" }}
-          onPress={() => console.log("Card clicked")}
-          selected={false}
-        />
-        <Card
-          key={7}
-          card={{ suit: "spades", display: "A", value: "1" }}
-          onPress={() => console.log("Card clicked")}
-          selected={false}
-        />
-        <Card
-          key={8}
-          card={{ suit: "diamonds", display: "A", value: "1" }}
-          onPress={() => console.log("Card clicked")}
-          selected={false}
-        />
         <MyCarousel />
         <PlayerHand
           cards={cards}
@@ -172,11 +148,10 @@ export default function Index() {
             pagingEnabled={false}
           />
         </View>
-
         <BlurView
           intensity={20}
           tint="dark"
-          className="rounded-2xl p-6 mb-6 border-2 border-green-700/50 bg-green-800/50"
+          className="rounded-2xl mb-6 border-2 border-green-700/50 bg-green-800/50"
         >
           <View className="flex-col lg:flex-row gap-4 mb-4">
             {/* Deck and Discard */}
@@ -248,6 +223,32 @@ export default function Index() {
             onSwitchToFoot={() => console.log("Switch to foot")}
           />
         </BlurView>
+        <View className="mb-20 pb-5">
+          <Card
+            key={5}
+            card={{ suit: "hearts", display: "A", value: "1" }}
+            onPress={() => console.log("Card clicked")}
+            selected={false}
+          />
+          <Card
+            key={6}
+            card={{ suit: "clubs", display: "A", value: "1" }}
+            onPress={() => console.log("Card clicked")}
+            selected={false}
+          />
+          <Card
+            key={7}
+            card={{ suit: "spades", display: "A", value: "1" }}
+            onPress={() => console.log("Card clicked")}
+            selected={false}
+          />
+          <Card
+            key={8}
+            card={{ suit: "diamonds", display: "A", value: "1" }}
+            onPress={() => console.log("Card clicked")}
+            selected={false}
+          />
+        </View>
       </ScrollView>
     </LinearGradient>
   );
