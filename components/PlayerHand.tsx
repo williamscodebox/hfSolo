@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Dimensions, Pressable, Text, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 // import { Hand, ChevronDown, ChevronUp } from 'lucide-react-native';
@@ -6,8 +6,12 @@ import { PlayerHandProps } from "@/utils/types";
 import { Button } from "./Button";
 import Card from "./Card"; // Your custom card component
 // import { Button } from './Button'; // Replace with your Expo-compatible buttonconst
+import type { ICarouselInstance } from "react-native-reanimated-carousel";
 
 const { width } = Dimensions.get("window");
+
+const CARD_GAP = 12; // space between cards
+const CARD_WIDTH = (width - CARD_GAP * 6) / 5;
 
 export default function PlayerHand({
   cards,
@@ -17,12 +21,13 @@ export default function PlayerHand({
   onSwitchToFoot,
 }: PlayerHandProps) {
   const [collapsed, setCollapsed] = useState(false);
+  const carouselRef = useRef<ICarouselInstance>(null);
 
   return (
     <View
       style={{
         backgroundColor: "rgba(120, 53, 15, 0.4)",
-        padding: 16,
+        padding: 2,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
       }}
@@ -32,17 +37,26 @@ export default function PlayerHand({
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: 12,
+          marginBottom: 2,
+          padding: 10,
         }}
       >
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginLeft: 15,
+            paddingRight: 20,
+            gap: 8,
+          }}
+        >
           {/* <Hand color="#fde68a" size={20} /> */}
           <Text style={{ color: "#fef3c7", fontWeight: "600" }}>
             {inFoot ? "Your Foot" : "Your Hand"} ({cards.length} cards)
           </Text>
         </View>
 
-        <View style={{ flexDirection: "row", gap: 8 }}>
+        <View style={{ flexDirection: "row", marginRight: 15, gap: 8 }}>
           {!inFoot && cards.length === 0 && (
             <Button
               onPress={onSwitchToFoot}
@@ -63,21 +77,36 @@ export default function PlayerHand({
       </View>
 
       {!collapsed && (
-        <Carousel
-          width={width * 0.6}
-          height={180}
-          data={cards}
-          scrollAnimationDuration={600}
-          renderItem={({ item, index }) => (
-            <Card
-              card={item}
-              onClick={() => onCardClick(item, index)}
-              selected={selectedCards.some((sc) => sc.idx === index)}
-            />
-          )}
-          mode="parallax"
-          loop
-        />
+        <View style={{ width: width }}>
+          <Carousel
+            ref={carouselRef}
+            width={CARD_WIDTH}
+            height={100}
+            data={cards}
+            style={{ width: "100%" }}
+            onProgressChange={(offsetProgress, absoluteProgress) => {
+              const lastVisibleIndex = cards.length - 6;
+              if (absoluteProgress > lastVisibleIndex) {
+                carouselRef.current?.scrollTo({
+                  index: lastVisibleIndex,
+                  animated: true,
+                });
+              }
+            }}
+            // scrollAnimationDuration={600}
+            renderItem={({ item, index }) => (
+              <View style={{ marginHorizontal: CARD_GAP / 2 }}>
+                <Card
+                  card={item}
+                  onPress={() => onCardClick(item, index)}
+                  selected={selectedCards.some((sc) => sc.idx === index)}
+                />
+              </View>
+            )}
+            loop={false}
+            pagingEnabled={false}
+          />
+        </View>
       )}
     </View>
   );

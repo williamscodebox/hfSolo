@@ -11,13 +11,13 @@ export type CardType = {
   value: string;
 };
 
-export type CardProps = {
+export interface CardProps {
   card: CardType;
-  onClick: () => void;
+  onPress: () => void;
   selected: boolean;
   size?: "small" | "normal" | "large";
   faceDown?: boolean;
-};
+}
 
 export interface ButtonProps {
   title: string;

@@ -8,7 +8,7 @@ const SUITS = { hearts: "♥", diamonds: "♦", clubs: "♣", spades: "♠" };
 
 export default function Card({
   card,
-  onClick,
+  onPress,
   selected,
   size = "normal",
   faceDown = false,
@@ -28,7 +28,7 @@ export default function Card({
 
   if (faceDown) {
     return (
-      <Pressable onPress={onClick}>
+      <Pressable onPress={onPress}>
         <MotiView
           from={{ scale: 1 }}
           animate={{ scale: 1.05 }}
@@ -45,7 +45,7 @@ export default function Card({
   }
 
   return (
-    <Pressable onPress={onClick}>
+    <Pressable onPress={onPress}>
       <MotiView
         from={{ scale: 1, translateY: 0 }}
         animate={{
