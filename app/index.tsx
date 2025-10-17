@@ -2,6 +2,7 @@ import Card from "@/components/Card";
 import MyCarousel from "@/components/Carousel";
 import PlayerHand from "@/components/PlayerHand";
 import { CardType } from "@/utils/types";
+import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import { Dimensions, ScrollView, Text, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
@@ -171,6 +172,82 @@ export default function Index() {
             pagingEnabled={false}
           />
         </View>
+
+        <BlurView
+          intensity={20}
+          tint="dark"
+          className="rounded-2xl p-6 mb-6 border-2 border-green-700/50 bg-green-800/50"
+        >
+          <View className="flex-col lg:flex-row gap-4 mb-4">
+            {/* Deck and Discard */}
+            <View className="flex-row gap-4 justify-center">
+              <View className="items-center">
+                <Text className="text-green-200 text-sm mb-2">Draw Deck</Text>
+                {/* <Pressable onPress={handleDrawFromDeck}>
+              <Card card={{}} faceDown size="large" />
+            </Pressable> */}
+                {/* <Text className="text-green-300 text-xs mt-1">{gameState.deck.length} cards</Text> */}
+              </View>
+
+              <View className="items-center">
+                <Text className="text-green-200 text-sm mb-2">
+                  Discard Pile
+                </Text>
+                {/* {gameState.discardPile.length > 0 ? (
+              <Pressable onPress={handleDrawFromDiscard}>
+                <Card card={gameState.discardPile.at(-1)} size="large" />
+              </Pressable>
+            ) : (
+              <View className="w-20 h-28 bg-green-900/40 rounded-lg border-2 border-dashed border-green-600/50 items-center justify-center">
+                <Text className="text-green-500 text-xs">Empty</Text>
+              </View>
+            )}
+            <Text className="text-green-300 text-xs mt-1">{gameState.discardPile.length} cards</Text> */}
+              </View>
+            </View>
+
+            {/* Controls */}
+            {/* <GameControls
+          selectedCards={selectedCards}
+          onCreateMeld={handleCreateMeld}
+          onAddToMeld={() => {}}
+          onDiscard={handleDiscard}
+          onDrawFromDeck={handleDrawFromDeck}
+          onDrawFromDiscard={handleDrawFromDiscard}
+          canDraw={!gameState.hasDrawn && gameState.currentPlayerIndex === 0}
+          canDiscard={gameState.hasDrawn && gameState.currentPlayerIndex === 0}
+          melds={humanPlayer.melds}
+        /> */}
+          </View>
+
+          {/* Melds */}
+          <View className="space-y-3">
+            {/* {gameState.players.map((player) => (
+          <MeldArea
+            key={player.id}
+            melds={player.melds}
+            playerName={player.name}
+            isCurrentPlayer={gameState.currentPlayerIndex === player.id}
+          />
+        ))} */}
+          </View>
+
+          {/* Human Player Hand */}
+          {/* <PlayerHand
+        cards={humanPlayer.hand}
+        onCardClick={handleCardClick}
+        selectedCards={selectedCards}
+        inFoot={humanPlayer.inFoot}
+        onSwitchToFoot={handleSwitchToFoot}
+      />    */}
+          <PlayerHand
+            cards={cards}
+            onCardClick={() => console.log("Card clicked")}
+            selectedCards={[]}
+            inFoot={false}
+            onSwitchToFoot={() => console.log("Switch to foot")}
+          />
+        </BlurView>
       </ScrollView>
     </LinearGradient>
   );
