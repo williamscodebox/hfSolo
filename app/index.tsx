@@ -4,10 +4,16 @@ import PlayerHand from "@/components/PlayerHand";
 import { CardType } from "@/utils/types";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
+import * as NavigationBar from "expo-navigation-bar";
+import { useEffect } from "react";
 import { Dimensions, ScrollView, Text, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 
 export default function Index() {
+  useEffect(() => {
+    NavigationBar.setVisibilityAsync("hidden");
+    NavigationBar.setBehaviorAsync("overlay-swipe"); // allows swipe to reveal temporarily
+  }, []);
   const cards: CardType[] = [
     { suit: "hearts", value: "5", display: "5" },
     { suit: "spades", value: "K", display: "K" },
