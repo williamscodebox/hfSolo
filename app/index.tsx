@@ -1,6 +1,5 @@
 import { Button } from "@/components/Button";
 import Card from "@/components/Card";
-import MyCarousel from "@/components/Carousel";
 import GameControls from "@/components/GameControls";
 import PlayerHand from "@/components/PlayerHand";
 import { CardType } from "@/utils/types";
@@ -9,7 +8,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as NavigationBar from "expo-navigation-bar";
 import { useEffect } from "react";
 import { Dimensions, Pressable, ScrollView, Text, View } from "react-native";
-import Carousel from "react-native-reanimated-carousel";
 
 export default function Index() {
   useEffect(() => {
@@ -131,45 +129,11 @@ export default function Index() {
             onPress={() => console.log("Card clicked")}
             selected={false}
           />
-          <MyCarousel />
-          <PlayerHand
-            cards={cards}
-            onCardClick={() => console.log("Card clicked")}
-            selectedCards={[]}
-            inFoot={false}
-            onSwitchToFoot={() => console.log("Switch to foot")}
-          />
-          <View
-            style={{
-              width: "100%",
-              backgroundColor: "blue",
-              height: 120,
-              marginTop: 20,
-            }}
-          >
-            <Carousel
-              width={CARD_WIDTH}
-              height={100}
-              data={cards}
-              style={{ width: "100%" }}
-              // scrollAnimationDuration={600}
-              renderItem={({ item, index }) => (
-                <View style={{ marginHorizontal: CARD_GAP / 2 }}>
-                  <Card
-                    card={item}
-                    onPress={() => console.log("Card clicked")}
-                    selected={false}
-                  />
-                </View>
-              )}
-              loop
-              pagingEnabled={false}
-            />
-          </View>
+
           <BlurView
             intensity={20}
             tint="dark"
-            className="rounded-2xl mb-6 border-2 border-green-700/50 bg-green-800/50"
+            className="rounded-2xl  border-2 border-green-700/50 bg-green-800/50"
           >
             <View className="flex-col lg:flex-row gap-4 mb-4">
               {/* Deck and Discard */}
@@ -240,40 +204,16 @@ export default function Index() {
         inFoot={humanPlayer.inFoot}
         onSwitchToFoot={handleSwitchToFoot}
       />    */}
-            <PlayerHand
-              cards={cards}
-              onCardClick={() => console.log("Card clicked")}
-              selectedCards={[]}
-              inFoot={false}
-              onSwitchToFoot={() => console.log("Switch to foot")}
-            />
+            <View className="mb-20 pb-10">
+              <PlayerHand
+                cards={cards}
+                onCardClick={() => console.log("Card clicked")}
+                selectedCards={[]}
+                inFoot={false}
+                onSwitchToFoot={() => console.log("Switch to foot")}
+              />
+            </View>
           </BlurView>
-          <View className="mb-20 pb-5">
-            <Card
-              key={5}
-              card={{ suit: "hearts", display: "A", value: "1" }}
-              onPress={() => console.log("Card clicked")}
-              selected={false}
-            />
-            <Card
-              key={6}
-              card={{ suit: "clubs", display: "A", value: "1" }}
-              onPress={() => console.log("Card clicked")}
-              selected={false}
-            />
-            <Card
-              key={7}
-              card={{ suit: "spades", display: "A", value: "1" }}
-              onPress={() => console.log("Card clicked")}
-              selected={false}
-            />
-            <Card
-              key={8}
-              card={{ suit: "diamonds", display: "A", value: "1" }}
-              onPress={() => console.log("Card clicked")}
-              selected={false}
-            />
-          </View>
         </ScrollView>
       </LinearGradient>
     </Pressable>

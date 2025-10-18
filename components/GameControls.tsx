@@ -1,4 +1,5 @@
 import { GameControlsProps } from "@/utils/types";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { Text, View } from "react-native";
 import { Button } from "./Button";
@@ -51,6 +52,7 @@ export default function GameControls({
           className="bg-red-600 hover:bg-red-700 flex-row items-center gap-2"
         >
           {/* <Trash2 size={16} /> */}
+          <Ionicons name="checkmark-circle" size={22} color="white" />
           <Text className="text-white">Discard</Text>
         </Button>
       </View>
