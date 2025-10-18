@@ -3,10 +3,9 @@ import { Dimensions, Pressable, Text, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 // import { Hand, ChevronDown, ChevronUp } from 'lucide-react-native';
 import { PlayerHandProps } from "@/utils/types";
+import type { ICarouselInstance } from "react-native-reanimated-carousel";
 import { Button } from "./Button";
 import Card from "./Card"; // Your custom card component
-// import { Button } from './Button'; // Replace with your Expo-compatible buttonconst
-import type { ICarouselInstance } from "react-native-reanimated-carousel";
 
 const { width } = Dimensions.get("window");
 
