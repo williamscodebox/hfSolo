@@ -1,5 +1,5 @@
 import { GameControlsProps } from "@/utils/types";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import Feather from "@expo/vector-icons/Feather";
 import React from "react";
 import { Text, View } from "react-native";
 import { Button } from "./Button";
@@ -23,7 +23,7 @@ export default function GameControls({
           disabled={!canDraw}
           className="bg-blue-600 hover:bg-blue-700 flex-row items-center gap-2"
         >
-          {/* <PlayCircle size={16} /> */}
+          <Feather name="play-circle" size={16} color="white" />
           <Text className="text-white">Draw Deck</Text>
         </Button>
 
@@ -33,7 +33,7 @@ export default function GameControls({
           //   variant="outline"
           className="flex-row items-center gap-2"
         >
-          {/* <PlayCircle size={16} /> */}
+          <Feather name="play-circle" size={16} color="white" />
           <Text className="text-white">Draw Discard</Text>
         </Button>
 
@@ -42,7 +42,7 @@ export default function GameControls({
           disabled={selectedCards.length < 3}
           className="bg-green-600 hover:bg-green-700 flex-row items-center gap-2"
         >
-          {/* <CheckCircle size={16} /> */}
+          <Feather name="check-circle" size={16} color="white" />
           <Text className="text-white">Create Meld</Text>
         </Button>
 
@@ -51,8 +51,7 @@ export default function GameControls({
           disabled={!canDiscard || selectedCards.length !== 1}
           className="bg-red-600 hover:bg-red-700 flex-row items-center gap-2"
         >
-          {/* <Trash2 size={16} /> */}
-          <Ionicons name="checkmark-circle" size={22} color="white" />
+          <Feather name="check-circle" size={16} color="white" />
           <Text className="text-white">Discard</Text>
         </Button>
       </View>
