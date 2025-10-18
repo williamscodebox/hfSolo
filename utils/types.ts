@@ -63,3 +63,14 @@ export interface ComputerPlayerProps {
   player: Player;
   isCurrentTurn: boolean;
 }
+
+export interface Meld {
+  value: string;
+  cards: CardType[]; // Replace with your actual card type
+}
+
+export interface MeldAreaProps {
+  melds: Meld[];
+  playerName: string;
+  isCurrentPlayer: boolean;
+}
