@@ -10,7 +10,7 @@ export default function ComputerPlayer({
 }: ComputerPlayerProps) {
   return (
     <View
-      className={`rounded-lg p-3 border-2 ${
+      className={`rounded-lg p-3 mx-2 border-2 ${
         isCurrentTurn ? "border-yellow-400" : "border-green-700/50"
       }`}
       style={{
