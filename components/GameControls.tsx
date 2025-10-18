@@ -1,9 +1,7 @@
 import { GameControlsProps } from "@/utils/types";
-import { CheckCircle, PlayCircle, Trash2 } from "lucide-react-native";
 import React from "react";
 import { Text, View } from "react-native";
 import { Button } from "./Button";
-// import { Button } from '@/components/ui/button'; // Assuming you're using NativeWind-compatible buttons
 
 export default function GameControls({
   selectedCards,
@@ -24,7 +22,7 @@ export default function GameControls({
           disabled={!canDraw}
           className="bg-blue-600 hover:bg-blue-700 flex-row items-center gap-2"
         >
-          <PlayCircle size={16} />
+          {/* <PlayCircle size={16} /> */}
           <Text className="text-white">Draw Deck</Text>
         </Button>
 
@@ -34,7 +32,7 @@ export default function GameControls({
           //   variant="outline"
           className="flex-row items-center gap-2"
         >
-          <PlayCircle size={16} />
+          {/* <PlayCircle size={16} /> */}
           <Text className="text-white">Draw Discard</Text>
         </Button>
 
@@ -43,7 +41,7 @@ export default function GameControls({
           disabled={selectedCards.length < 3}
           className="bg-green-600 hover:bg-green-700 flex-row items-center gap-2"
         >
-          <CheckCircle size={16} />
+          {/* <CheckCircle size={16} /> */}
           <Text className="text-white">Create Meld</Text>
         </Button>
 
@@ -52,7 +50,7 @@ export default function GameControls({
           disabled={!canDiscard || selectedCards.length !== 1}
           className="bg-red-600 hover:bg-red-700 flex-row items-center gap-2"
         >
-          <Trash2 size={16} />
+          {/* <Trash2 size={16} /> */}
           <Text className="text-white">Discard</Text>
         </Button>
       </View>
