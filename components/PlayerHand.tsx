@@ -61,7 +61,12 @@ export default function PlayerHand({
               onPress={onSwitchToFoot}
               title="Pick Up Foot"
               color="green"
-            />
+              className="bg-green-600 hover:bg-green-700 flex-row items-center gap-2"
+            >
+              <Text style={{ color: "white", fontWeight: "600" }}>
+                Pick Up Foot
+              </Text>
+            </Button>
           )}
           <Pressable onPress={() => setCollapsed(!collapsed)}>
             {collapsed ? (
