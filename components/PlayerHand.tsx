@@ -1,15 +1,16 @@
+import { PlayerHandProps } from "@/utils/types";
+import Feather from "@expo/vector-icons/Feather";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React, { useRef, useState } from "react";
 import { Dimensions, Pressable, Text, View } from "react-native";
-import Carousel from "react-native-reanimated-carousel";
-// import { Hand, ChevronDown, ChevronUp } from 'lucide-react-native';
-import { PlayerHandProps } from "@/utils/types";
 import type { ICarouselInstance } from "react-native-reanimated-carousel";
+import Carousel from "react-native-reanimated-carousel";
 import { Button } from "./Button";
-import Card from "./Card"; // Your custom card component
+import Card from "./Card";
 
 const { width } = Dimensions.get("window");
 
-const CARD_GAP = 12; // space between cards
+const CARD_GAP = 12;
 const CARD_WIDTH = (width - CARD_GAP * 6) / 5;
 
 export default function PlayerHand({
@@ -49,7 +50,7 @@ export default function PlayerHand({
             gap: 8,
           }}
         >
-          {/* <Hand color="#fde68a" size={20} /> */}
+          <FontAwesome name="hand-stop-o" size={20} color="#fde68a" />
           <Text style={{ color: "#fef3c7", fontWeight: "600" }}>
             {inFoot ? "Your Foot" : "Your Hand"} ({cards.length} cards)
           </Text>
@@ -70,11 +71,9 @@ export default function PlayerHand({
           )}
           <Pressable onPress={() => setCollapsed(!collapsed)}>
             {collapsed ? (
-              //   <ChevronUp color="#fde68a" size={18} />
-              <Text style={{ color: "#fef3c7", fontWeight: "600" }}>"^"</Text>
+              <Feather name="chevron-up" size={18} color="#fde68a" />
             ) : (
-              //   <ChevronDown color="#fde68a" size={18} />
-              <Text style={{ color: "#fef3c7", fontWeight: "600" }}>"V"</Text>
+              <Feather name="chevron-down" size={18} color="#fde68a" />
             )}
           </Pressable>
         </View>
