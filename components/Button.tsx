@@ -1,13 +1,15 @@
 import { ButtonProps } from "@/utils/types";
 import React from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, View } from "react-native";
 
 export function Button({
   title,
   onPress,
+  disabled,
   color = "#16a34a",
   textColor = "#fff",
-  style = {},
+  className,
+  children,
 }: ButtonProps) {
   return (
     <Pressable
@@ -20,10 +22,10 @@ export function Button({
           borderRadius: 12,
           alignItems: "center",
         },
-        style,
       ]}
+      className={className}
     >
-      <Text style={{ color: textColor, fontWeight: "600" }}>{title}</Text>
+      <View className="flex-row items-center justify-center">{children}</View>
     </Pressable>
   );
 }

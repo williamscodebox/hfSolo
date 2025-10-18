@@ -1,5 +1,3 @@
-import { ViewStyle } from "react-native";
-
 export type SelectedCard = {
   idx: number;
   // Add other fields if needed, like suit/value/etc.
@@ -20,11 +18,13 @@ export interface CardProps {
 }
 
 export interface ButtonProps {
-  title: string;
+  title?: string;
   onPress: () => void;
+  disabled?: boolean;
   color?: string;
   textColor?: string;
-  style?: ViewStyle;
+  className: string;
+  children: React.ReactNode;
 }
 
 export interface PlayerHandProps {
@@ -39,3 +39,15 @@ export type RulesModalProps = {
   showRules: boolean;
   setShowRules: (value: boolean) => void;
 };
+
+export interface GameControlsProps {
+  selectedCards: CardProps[];
+  onCreateMeld: () => void;
+  onAddToMeld: () => void;
+  onDiscard: () => void;
+  onDrawFromDeck: () => void;
+  onDrawFromDiscard: () => void;
+  canDraw: boolean;
+  canDiscard: boolean;
+  // melds: Meld[];
+}
