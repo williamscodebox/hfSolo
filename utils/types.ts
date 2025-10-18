@@ -51,3 +51,15 @@ export interface GameControlsProps {
   canDiscard: boolean;
   // melds: Meld[];
 }
+
+export interface Player {
+  name: string;
+  inFoot: boolean;
+  hand: CardType[]; // Replace `Card` with your actual card type
+  score: number;
+}
+
+export interface ComputerPlayerProps {
+  player: Player;
+  isCurrentTurn: boolean;
+}
