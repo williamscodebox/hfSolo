@@ -74,3 +74,9 @@ export interface MeldAreaProps {
   playerName: string;
   isCurrentPlayer: boolean;
 }
+
+export interface GameState {
+  currentPlayerIndex: number;
+  players: Player[];
+  // add other fields as needed
+}

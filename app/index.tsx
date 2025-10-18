@@ -1,17 +1,23 @@
+import AlertMessage from "@/components/Alert";
 import { Button } from "@/components/Button";
 import Card from "@/components/Card";
+import ComputerPlayer from "@/components/ComputerPlayer";
 import GameControls from "@/components/GameControls";
 import PlayerHand from "@/components/PlayerHand";
-import { CardType } from "@/utils/types";
+import { CardType, GameState } from "@/utils/types";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import Feather from "@expo/vector-icons/Feather";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import * as NavigationBar from "expo-navigation-bar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Dimensions, Pressable, ScrollView, Text, View } from "react-native";
 
 export default function Index() {
+  const [gameState, setGameState] = useState<GameState | null>(null);
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [message, setMessage] = useState("test");
+  const [showRules, setShowRules] = useState(false);
   useEffect(() => {
     NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBehaviorAsync("overlay-swipe"); // allows swipe to reveal temporarily
@@ -53,29 +59,29 @@ export default function Index() {
         <ScrollView keyboardShouldPersistTaps="handled" className="mt-10 pt-5">
           <View className="max-w-7xl mx-auto">
             {/* Header */}
-            <View className="flex-row justify-between items-center mb-6">
-              <View className="flex-row items-center space-x-3">
+            <View className="flex-row justify-between w-full mb-6 px-2">
+              <View className="flex-row items-center space-x-3 gap-1">
                 <EvilIcons name="trophy" size={32} color="#facc15" />
                 <Text className="text-3xl font-bold text-white">
                   Hand & Foot
                 </Text>
               </View>
-              <View className="flex-row space-x-3">
+              <View className="flex-row space-x-3 gap-2">
                 <Button
                   // variant="outline"
                   // size="sm"
                   // onPress={() => setShowRules(true)}
                   onPress={() => console.log("Show Rules")}
-                  className="flex-row items-center space-x-2"
+                  className="flex-row items-center space-x-2 bg-slate-100 active:bg-slate-200 p-2 rounded"
                 >
                   <Feather name="info" size={16} color="black" />
-                  <Text>Rules</Text>
+                  <Text className="pl-1">Rules</Text>
                 </Button>
                 <Button
                   // onPress={initializeGame}
                   onPress={() => console.log("New Game")}
                   // size="sm"
-                  className="flex-row items-center space-x-2 bg-amber-600 active:bg-amber-700"
+                  className="flex-row items-center space-x-2 bg-amber-600 active:bg-amber-700 p-2 rounded"
                 >
                   {/* <RotateCcw size={16} /> */}
                   <Text className="text-white">New Game</Text>
@@ -84,28 +90,21 @@ export default function Index() {
             </View>
 
             {/* Alert Message */}
-            {/* {message && (
-          <Alert className="mb-4 bg-amber-100 border border-amber-400">
-            <Text className="text-amber-900">{message}</Text>
-          </Alert>
-        )} */}
+            {message && <AlertMessage message={message} />}
 
             {/* Computer Players */}
             {/* <View className="space-y-3 md:flex md:flex-row md:flex-wrap md:gap-3 mb-6">
-          {computerPlayers.map((player) => (
+          {computerPlayers.map((player) => ( */}
             <ComputerPlayer
-              key={player.id}
-              player={player}
-              isCurrentTurn={gameState.currentPlayerIndex === player.id}
+              // key={player.id}
+              key={1}
+              // player={player}
+              player={{ name: "Computer 1", score: 0, hand: [], inFoot: false }}
+              // isCurrentTurn={gameState.currentPlayerIndex === player.id}
+              isCurrentTurn={gameState?.currentPlayerIndex === 1}
             />
-          ))}
+            {/* ))}
         </View> */}
-          </View>
-          <Text>Edit app/index.tsx to edit this screen.</Text>
-          <View className="items-center justify-center bg-black h-24 w-full">
-            <Text className="text-white text-xl font-bold">
-              NativeWind + Expo Router ✅
-            </Text>
           </View>
           <Card
             key={1}
