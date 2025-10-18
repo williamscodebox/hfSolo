@@ -1,5 +1,6 @@
 import { ComputerPlayerProps } from "@/utils/types";
-import { Hand, User } from "lucide-react-native";
+import Feather from "@expo/vector-icons/Feather";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React from "react";
 import { Text, View } from "react-native";
 
@@ -18,7 +19,7 @@ export default function ComputerPlayer({
     >
       <View className="flex-row items-center justify-between mb-2">
         <View className="flex-row items-center gap-2">
-          <User size={20} color="#bbf7d0" />
+          <Feather name="user" size={20} color="#bbf7d0" />
           <Text className="text-green-100 font-semibold">{player.name}</Text>
         </View>
 
@@ -31,7 +32,7 @@ export default function ComputerPlayer({
 
       <View className="flex-row gap-3 text-xs">
         <View className="flex-row items-center gap-1">
-          <Hand size={12} color="#bbf7d0" />
+          <FontAwesome name="hand-stop-o" size={12} color="#bbf7d0" />
           <Text className="text-green-200">
             {player.inFoot ? "Foot" : "Hand"}: {player.hand.length}
           </Text>
