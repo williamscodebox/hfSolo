@@ -1,5 +1,5 @@
 import { MeldAreaProps } from "@/utils/types";
-import { CheckCircle, Target } from "lucide-react-native";
+import Feather from "@expo/vector-icons/Feather";
 import React from "react";
 import { Text, View } from "react-native";
 import Card from "./Card"; // Make sure this is your React Native version
@@ -17,7 +17,7 @@ export default function MeldArea({
       style={{ backgroundColor: "rgba(22, 101, 52, 0.3)" }} // Tailwind's green-800/30
     >
       <View className="flex-row items-center gap-2 mb-2">
-        <Target size={16} color="#bbf7d0" />
+        <Feather name="target" size={16} color="#bbf7d0" />
         <Text className="text-green-100 font-semibold text-sm">
           {playerName}'s Melds
         </Text>
@@ -38,7 +38,7 @@ export default function MeldArea({
                   {meld.value} ({meld.cards.length})
                 </Text>
                 {meld.cards.length >= 7 && (
-                  <CheckCircle size={12} color="#facc15" /> // Tailwind yellow-400
+                  <Feather name="check-circle" size={12} color="#facc15" />
                 )}
               </View>
               <View className="flex-row gap-1 flex-wrap">
