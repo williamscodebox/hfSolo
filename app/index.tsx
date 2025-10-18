@@ -1,5 +1,7 @@
+import { Button } from "@/components/Button";
 import Card from "@/components/Card";
 import MyCarousel from "@/components/Carousel";
+import GameControls from "@/components/GameControls";
 import PlayerHand from "@/components/PlayerHand";
 import { CardType } from "@/utils/types";
 import { BlurView } from "expo-blur";
@@ -59,23 +61,25 @@ export default function Index() {
                 </Text>
               </View>
               <View className="flex-row space-x-3">
-                {/* <Button
-              variant="outline"
-              size="sm"
-              onPress={() => setShowRules(true)}
-              className="flex-row items-center space-x-2"
-            >
-              <Info size={16} />
-              <Text>Rules</Text>
-            </Button>
-            <Button
-              onPress={initializeGame}
-              size="sm"
-              className="flex-row items-center space-x-2 bg-amber-600 active:bg-amber-700"
-            >
-              <RotateCcw size={16} />
-              <Text className="text-white">New Game</Text>
-            </Button> */}
+                <Button
+                  // variant="outline"
+                  // size="sm"
+                  // onPress={() => setShowRules(true)}
+                  onPress={() => console.log("Show Rules")}
+                  className="flex-row items-center space-x-2"
+                >
+                  {/* <Info size={16} /> */}
+                  <Text>Rules</Text>
+                </Button>
+                <Button
+                  // onPress={initializeGame}
+                  onPress={() => console.log("New Game")}
+                  // size="sm"
+                  className="flex-row items-center space-x-2 bg-amber-600 active:bg-amber-700"
+                >
+                  {/* <RotateCcw size={16} /> */}
+                  <Text className="text-white">New Game</Text>
+                </Button>
               </View>
             </View>
 
@@ -196,17 +200,24 @@ export default function Index() {
               </View>
 
               {/* Controls */}
-              {/* <GameControls
-          selectedCards={selectedCards}
-          onCreateMeld={handleCreateMeld}
-          onAddToMeld={() => {}}
-          onDiscard={handleDiscard}
-          onDrawFromDeck={handleDrawFromDeck}
-          onDrawFromDiscard={handleDrawFromDiscard}
-          canDraw={!gameState.hasDrawn && gameState.currentPlayerIndex === 0}
-          canDiscard={gameState.hasDrawn && gameState.currentPlayerIndex === 0}
-          melds={humanPlayer.melds}
-        /> */}
+              <GameControls
+                // selectedCards={selectedCards}
+                selectedCards={[]}
+                // onCreateMeld={handleCreateMeld}
+                onCreateMeld={() => {}}
+                onAddToMeld={() => {}}
+                // onDiscard={handleDiscard}
+                onDiscard={() => {}}
+                // onDrawFromDeck={handleDrawFromDeck}
+                onDrawFromDeck={() => {}}
+                // onDrawFromDiscard={handleDrawFromDiscard}
+                onDrawFromDiscard={() => {}}
+                // canDraw={!gameState.hasDrawn && gameState.currentPlayerIndex === 0}
+                canDraw={!false && 0 === 0}
+                // canDiscard={gameState.hasDrawn && gameState.currentPlayerIndex === 0}
+                canDiscard={true && 0 === 0}
+                // melds={humanPlayer.melds}
+              />
             </View>
 
             {/* Melds */}
