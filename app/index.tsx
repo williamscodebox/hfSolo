@@ -3,6 +3,8 @@ import Card from "@/components/Card";
 import GameControls from "@/components/GameControls";
 import PlayerHand from "@/components/PlayerHand";
 import { CardType } from "@/utils/types";
+import EvilIcons from "@expo/vector-icons/EvilIcons";
+import Feather from "@expo/vector-icons/Feather";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import * as NavigationBar from "expo-navigation-bar";
@@ -53,7 +55,7 @@ export default function Index() {
             {/* Header */}
             <View className="flex-row justify-between items-center mb-6">
               <View className="flex-row items-center space-x-3">
-                {/* <Trophy size={32} color="#facc15" /> */}
+                <EvilIcons name="trophy" size={32} color="#facc15" />
                 <Text className="text-3xl font-bold text-white">
                   Hand & Foot
                 </Text>
@@ -66,7 +68,7 @@ export default function Index() {
                   onPress={() => console.log("Show Rules")}
                   className="flex-row items-center space-x-2"
                 >
-                  {/* <Info size={16} /> */}
+                  <Feather name="info" size={16} color="black" />
                   <Text>Rules</Text>
                 </Button>
                 <Button
