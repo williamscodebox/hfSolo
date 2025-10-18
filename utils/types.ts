@@ -7,6 +7,7 @@ export type CardType = {
   suit: "hearts" | "diamonds" | "clubs" | "spades";
   display: string;
   value: string;
+  isRed3?: boolean;
 };
 
 export interface CardProps {

@@ -13,6 +13,63 @@ import * as NavigationBar from "expo-navigation-bar";
 import { useEffect, useState } from "react";
 import { Dimensions, Pressable, ScrollView, Text, View } from "react-native";
 
+// Game constants
+const CARD_VALUES = [
+  "A",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+  "RED3",
+];
+const SUITS = ["hearts", "diamonds", "clubs", "spades"];
+
+// Initialize deck with 5 standard decks + jokers
+const createDeck = () => {
+  const deck = [];
+  for (let d = 0; d < 5; d++) {
+    for (let suit of SUITS) {
+      for (let value of CARD_VALUES.filter((v) => v !== "RED3")) {
+        deck.push({ suit, value, display: value, isWild: value === "2" });
+      }
+    }
+    // Add red 3s (special cards)
+    deck.push({ suit: "hearts", value: "RED3", display: "3", isRed3: true });
+    deck.push({ suit: "diamonds", value: "RED3", display: "3", isRed3: true });
+    // Add jokers (wild cards)
+    for (let j = 0; j < 4; j++) {
+      deck.push({ suit: "joker", value: "JOKER", display: "🃏", isWild: true });
+    }
+  }
+  return shuffle(deck);
+};
+
+function shuffle<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const getCardValue = (card: CardType) => {
+  if (card.isRed3) return 500;
+  if (card.value === "JOKER") return 50;
+  if (card.value === "2") return 20;
+  if (card.value === "A") return 20;
+  if (["K", "Q", "J", "10", "9", "8"].includes(card.value)) return 10;
+  return 5;
+};
+
 export default function Index() {
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [selectedCards, setSelectedCards] = useState([]);
